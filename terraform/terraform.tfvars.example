@@ -1,0 +1,17 @@
+# Copy to terraform.tfvars (git-ignored) and edit.
+
+# --- Standalone mode: your own AWS account (everything is created) ---
+use_existing_vpc       = false
+use_existing_iam_roles = false
+create_rds             = true
+# db_password          = "set-me-via-TF_VAR_db_password-instead"   # prefer: export TF_VAR_db_password=...
+
+# --- Academy lab mode: pre-existing LabVPC, roles and database ---
+# use_existing_vpc       = true
+# use_existing_iam_roles = true
+# create_rds             = false
+# db_endpoint            = "<rds-endpoint>"
+
+create_cloud9          = false
+admin_allowed_cidr     = "" # e.g. "203.0.113.25/32"
+customer_desired_count = 1
