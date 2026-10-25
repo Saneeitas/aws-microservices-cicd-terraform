@@ -1,0 +1,35 @@
+{
+  "family": "${family}",
+  "executionRoleArn": "${execution_role_arn}",
+  "networkMode": "awsvpc",
+  "requiresCompatibilities": ["FARGATE"],
+  "cpu": "512",
+  "memory": "1024",
+  "containerDefinitions": [
+    {
+      "name": "${container_name}",
+      "image": "<IMAGE1_NAME>",
+      "essential": true,
+      "portMappings": [
+        {
+          "containerPort": 8080,
+          "protocol": "tcp"
+        }
+      ],
+      "environment": [
+        {
+          "name": "APP_DB_HOST",
+          "value": "${db_endpoint}"
+        }
+      ],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "${log_group}",
+          "awslogs-region": "${region}",
+          "awslogs-stream-prefix": "awslogs-capstone"
+        }
+      }
+    }
+  ]
+}

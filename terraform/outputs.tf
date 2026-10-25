@@ -22,3 +22,7 @@ output "ecs_cluster" {
 output "ecs_services" {
   value = { for k, s in aws_ecs_service.svc : k => s.name }
 }
+
+output "codecommit_clone_urls" {
+  value = { for k, r in aws_codecommit_repository.repo : k => r.clone_url_http }
+}
