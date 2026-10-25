@@ -10,3 +10,7 @@ output "log_group" {
 output "db_endpoint" {
   value = local.db_endpoint
 }
+
+output "alb_dns_name" {
+  value = aws_lb.main.dns_name
+}
