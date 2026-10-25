@@ -26,3 +26,7 @@ output "ecs_services" {
 output "codecommit_clone_urls" {
   value = { for k, r in aws_codecommit_repository.repo : k => r.clone_url_http }
 }
+
+output "pipelines" {
+  value = { for k, p in aws_codepipeline.svc : k => p.name }
+}
