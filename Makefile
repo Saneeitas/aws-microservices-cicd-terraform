@@ -1,6 +1,10 @@
 TF := terraform -chdir=terraform
 
-.PHONY: init plan apply destroy push-images push-deploy-files fmt validate
+.PHONY: test init plan apply destroy push-images push-deploy-files fmt validate
+
+# Offline checks with a mocked AWS provider (no credentials, no AWS calls). Terraform >= 1.7.
+test: init
+	$(TF) test
 
 init:
 	$(TF) init
